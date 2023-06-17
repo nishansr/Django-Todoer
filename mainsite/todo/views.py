@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import Todo
 from .forms import TodoForm
+
 # ! Homepage
 def home(request):
     todos = Todo.objects.all()
-    form = TodoForm()
-    
+    form = TodoForm()    
     if request.method == 'POST':
         form = TodoForm(request.POST)
         if form.is_valid:
@@ -14,9 +14,10 @@ def home(request):
     
     context = {
         'todos': todos,
-        'form': form
+        'form': form,
     }
     return render(request, 'base.html', context)
+
 # ! Updating
 def update(request, pk):
     todo = get_object_or_404(Todo, pk=pk)
@@ -36,7 +37,7 @@ def update(request, pk):
 def delete(request, pk):
     todo = Todo.objects.get(id = pk)
     todo.delete()
-    return redirect('/')
+    return redirect("/")
 
 # ! Completing
 def finish(request, pk):
@@ -53,3 +54,11 @@ def search(request):
         'todos': todos
     }
     return render(request, 'search.html', context)
+
+# ! Detailing
+def details(request, pk):
+    todos= Todo.objects.get(id=pk)
+    context = {
+        'todos': todos
+    }
+    return render(request, 'details.html', context)

@@ -8,5 +8,6 @@ urlpatterns = [
     path('update/<int:pk>/', views.update, name='update'),
     path('delete/<int:pk>/', views.delete, name='delete'),
     path('search/', views.search, name='search'),
+    path('details/<int:pk>', views.details, name='details'),
     path('admin/', admin.site.urls)
 ]
