@@ -57,8 +57,8 @@ def search(request):
 
 # ! Detailing
 def details(request, pk):
-    todos= Todo.objects.get(id=pk)
+    todo= Todo.objects.get(id=pk)
     context = {
-        'todos': todos
+        'todo': todo
     }
     return render(request, 'details.html', context)

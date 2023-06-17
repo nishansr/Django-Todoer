@@ -1,1 +1,25 @@
 {% include "header.html" %}
+<div class="container">
+    <h1 class="title">
+        {{todo}}
+        {% if todo.is_completed %}
+            <img class="details" height="35px" src="/static/img/tick.png">
+            {% else %}
+            <img class="details" height="35px" src="/static/img/pngegg.png">
+        {% endif %}
+    </h1>
+    </div>
+    <br>
+    <div class="container">
+    <h2>
+        {{todo.description}}
+    </h2>
+    <br>
+    <h2> "{{todo.created_at}}"</h2>
+    </div>
+    <br>
+<div class="container" id="button">
+    <button type="button" class="btn btn-success"><a href="{% url 'finish' todo.id %}">Completed</a></button>
+    <button type="button" class="btn btn-warning"><a href="{% url 'update' todo.pk %}">Update</a></button>
+    <button type="button" class="btn btn-danger"><a href="{% url 'delete' todo.id %}">DELETE</a></button>
+</div>

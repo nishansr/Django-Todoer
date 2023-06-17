@@ -1,0 +1,15 @@
+.title{
+    margin-top: 25px;
+    text-align: center;
+    font-size: 4em;
+}
+h2{
+    text-align: center;
+    color: rgb(132, 129, 129);
+}
+#button{
+    margin-left: 700px;
+}
+.details{
+    height: 60px;
+}

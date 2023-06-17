@@ -1,4 +1,6 @@
 {% include "header.html" %}
+
+
 <br>
 <marquee behavior="Alternate" direction="left">
   <h1 style="color: rgb(89, 175, 89);"><strong>Finish your Task fast.</strong></h1>
@@ -13,6 +15,7 @@
     <form class="container mb-1" method="POST" action="/">
       {% csrf_token %} 
       {{form}}
+      <br>
       <input class="btn btn-outline-success" type="submit" value="Add">
     </form>
 
@@ -32,7 +35,7 @@
           <td>
             {% if todo.is_completed %}
             <strike><a class="black" href="{% url 'details' todo.id %}">{{ todo|upper }}</a></strike>
-            {% else %} {{ todo|upper }} {% endif %}
+            {% else %}<a class="black" href="{% url 'details' todo.id %}">{{ todo|upper }}</a>{% endif %}
           </td>
           <td>
             <div
@@ -72,9 +75,10 @@
         {% for todo in todos %}
         {% if todo.is_completed %}
         <tr>
-          <th scope="row">{{forloop.counter }}</th>
+          <th scope="row">
+            {{forloop.counter }}</th>
           <td>
-            {{todo|upper}}
+            <a class="black" href="{% url 'details' todo.id %}">{{ todo|upper }}</a>
           </td>
           <td>
             <div class="btn-group"
