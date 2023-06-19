@@ -5,7 +5,7 @@
 <marquee behavior="Alternate" direction="left">
   <h1 style="color: rgb(89, 175, 89);"><strong>Finish your Task fast.</strong></h1>
 </marquee>
-<br><br><br>
+<br><br>
     <div class="container text-center">
       <div class="row align-items-start">
         <div class="col">
@@ -14,7 +14,7 @@
           <h1>Add New Tasks</h1>
     <form class="container mb-1" method="POST" action="/">
       {% csrf_token %} 
-      {{form}}
+      {{form.as_p}}
       <br>
       <input class="btn btn-outline-success" type="submit" value="Add">
     </form>

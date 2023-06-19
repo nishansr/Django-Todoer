@@ -5,11 +5,13 @@ from .forms import TodoForm
 # ! Homepage
 def home(request):
     todos = Todo.objects.all()
-    form = TodoForm()    
+    form = TodoForm(request.POST, request.FILES)    
     if request.method == 'POST':
         form = TodoForm(request.POST)
         if form.is_valid:
             form.save()
+        else:
+            print(form.errors)
         return redirect('/')
     
     context = {
